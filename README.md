@@ -14,3 +14,27 @@
 * This entire process of information flowing from the input to the output is called forward propagation.
 * The weights determine which neurons are triggered.
 * During training, the weights are updated using a process called backpropagation
+
+# What is an Activation Function?
+* In a neural network, after the multiplication of features by weights and the addition of bias, an activation function is applied.
+* Activation functions transform the output of this initial operation.
+* They are important because they determine whether a neuron gets activated or not.
+* If a neuron is activated, it means it is transferring a signal that helps in the classification of the final output.
+* If a neuron is not activated, no signal is transferred.
+* The array can be seen as a kind of activation function.
+## Sigmoid Activation Function
+* The Sigmoid activation function is a type of activation function.
+* It transforms the input value (Y, which is the product of weights and input features plus bias) to a value between 0 and 1.
+* The formula for the Sigmoid function is 1 / (1 + e^(-Y)).
+* If the output of the Sigmoid function is less than 0.5, it is generally considered as 0 (neuron not activated).
+* If the output is greater than 0.5 (or equal to, though not explicitly mentioned), it is considered as 1 (neuron activated).
+* The Sigmoid function is often used in the final output layer for classification problems because it transforms the value into a probability-like range between 0 and 1.
+  
+## ReLU (Rectified Linear Unit) Activation Function
+* ReLU is another activation function.
+* The formula for ReLU is max(Y, 0), where Y is the output of the weights and features plus bias.
+* If Y is negative, the output of the ReLU function is 0 (neuron not activated).
+* If Y is positive, the output of the ReLU function is the positive value of Y.
+* ReLU is described as being more popular than Sigmoid.
+* It is often used in the middle layers of neural networks, and sometimes in all layers except the output layer for regression problems.
+* However, for classification problems, Sigmoid is generally preferred in the final output layer
