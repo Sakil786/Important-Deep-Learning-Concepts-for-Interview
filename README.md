@@ -38,3 +38,17 @@
 * ReLU is described as being more popular than Sigmoid.
 * It is often used in the middle layers of neural networks, and sometimes in all layers except the output layer for regression problems.
 * However, for classification problems, Sigmoid is generally preferred in the final output layer
+
+# Vanishing Gradients:
+* A common problem during neural network training, affecting both regular Artificial Neural Networks (ANNs) and Recurrent Neural Networks (RNNs).
+* During backward propagation, weights in the network are updated based on the gradient of the loss function with respect to those weights.
+* The gradient for earlier layers is calculated using the chain rule, involving the multiplication of derivatives across multiple layers.
+* If these individual derivatives are small, their product becomes even smaller.
+* A very small gradient leads to a minimal change in the weights of the earlier layers during training.
+* This results in a slow learning process because the earlier layers hardly learn anything.
+* In deep neural networks, the problem is more prominent due to a greater number of layers.
+* In RNNs, vanishing gradients cause a short memory, as the impact of earlier inputs in a sequence diminishes over time, making it difficult to learn long-range dependencies.
+# Exploding Gradients:
+* Occurs when the individual derivatives during backpropagation are large.
+* The product of these large derivatives results in a very large gradient.
+* Mentioned as a problem in RNNs.
