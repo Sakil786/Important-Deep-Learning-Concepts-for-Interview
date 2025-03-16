@@ -38,6 +38,12 @@
 * ReLU is described as being more popular than Sigmoid.
 * It is often used in the middle layers of neural networks, and sometimes in all layers except the output layer for regression problems.
 * However, for classification problems, Sigmoid is generally preferred in the final output layer
+## Leaky Relu:
+* Leaky Relu is a modification of the Relu activation function.
+* It aims to address the "dying Relu" problem. This is a situation where neurons stop updating their weights because their output remains zero.
+* For negative input values, instead of outputting zero like the standard Relu, Leaky Relu outputs a small non-zero value (alpha * x).
+* This small non-zero output for negative inputs ensures that there is still a small gradient, preventing the neuron from becoming completely inactive.
+* The key difference from Relu is the behaviour for negative inputs, where Leaky Relu allows a small, linear output.
 
 # Vanishing Gradients:
 * A common problem during neural network training, affecting both regular Artificial Neural Networks (ANNs) and Recurrent Neural Networks (RNNs).
