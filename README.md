@@ -44,6 +44,14 @@
 * For negative input values, instead of outputting zero like the standard Relu, Leaky Relu outputs a small non-zero value (alpha * x).
 * This small non-zero output for negative inputs ensures that there is still a small gradient, preventing the neuron from becoming completely inactive.
 * The key difference from Relu is the behaviour for negative inputs, where Leaky Relu allows a small, linear output.
+ ## GELU activation function:
+* **Mathematical Representation**: The GELU activation function is mathematically represented as the product of the input $x$ and the cumulative distribution function (CDF) of the standard Gaussian distribution, denoted as $\Phi(x)$. So, $GELU(x) = x \cdot \Phi(x)$.
+* **Approximation in GPT-2**: Due to the complexity of computing the Gaussian CDF, an approximation was used for training GPT-2. This approximation is: $GELU(x) \approx 0.5 \cdot x \cdot (1 + \tanh(\sqrt{2/\pi} \cdot (x + 0.044715 \cdot x^3)))$.
+* **Smoothness**: Unlike ReLU, the GELU activation function is smooth throughout. ReLU has a sharp corner at $x=0$, making it non-differentiable at that point. GELU, being smooth, is differentiable across all $x$.
+* **Non-Zero for Negative Inputs**: For $x < 0$, the ReLU activation function returns zero. In contrast, GELU produces small non-zero output values for negative inputs. It tends towards zero but does not become zero.
+* **Prevents Dead Neuron Problem**: The fact that GELU is not zero for negative $x$ helps to prevent the dead neuron problem associated with ReLU. Neurons receiving negative input can still contribute to the learning process with GELU, unlike ReLU where they would output zero and effectively become inactive.
+* **Performance in LLMs**: Experiments have generally shown that GELU performs better than ReLU in the context of large language models (LLMs). The smoothness of GELU can lead to better optimisation properties during training, allowing for more nuanced adjustments to model parameters.
+* **Incorporated in Feed Forward Network**: In the Transformer block of LLM architectures like GPT, the GELU activation function is typically found within the feed forward neural network. This network consists of two linear layers with the GELU activation applied after the first linear layer
 
 # Vanishing Gradients:
 * A common problem during neural network training, affecting both regular Artificial Neural Networks (ANNs) and Recurrent Neural Networks (RNNs).
