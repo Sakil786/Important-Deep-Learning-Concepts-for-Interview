@@ -66,3 +66,25 @@
 * Occurs when the individual derivatives during backpropagation are large.
 * The product of these large derivatives results in a very large gradient.
 * Mentioned as a problem in RNNs.
+
+# Optimizers
+
+## Gradient Descent (GD):
+* Updates weights by considering all data points in the dataset to calculate the derivative of the loss function.
+* The weight update formula is: W_new = W_old - learning rate * (derivative of loss with respect to W_old).
+* Computationally expensive and requires significant resources for large datasets as all records need to be loaded.
+* The convergence path towards the global minima is typically more direct.
+## Stochastic Gradient Descent (SGD):
+* Updates weights by considering only one data point at a time.
+* The loss calculation for weight update considers a single data point: Loss = (Y - Y_hat)^2.
+* Used in scenarios like linear regression.
+## Mini-batch Stochastic Gradient Descent (Mini-batch SGD):
+* Updates weights by considering a small batch (k) of data points, where k is less than the total number of data points (n).
+* The loss is calculated based on the batch of k data points: Loss = Summation from i=1 to k of (Y_i - Y_hat_i)^2.
+* Commonly used in many neural network techniques like CNNs.
+* Less computationally expensive than GD as it processes smaller batches of data.
+* The convergence path towards the global minima is more zigzag or noisy compared to GD due to the sample-based updates.
+* The derivative of the loss with respect to the weights using Mini-batch SGD is an approximation of the derivative calculated using GD (which considers the entire population of data).
+* Choosing the appropriate batch size (k) depends on the computational power available.
+* Mini-batch SGD can be likened to taking a sample of the population (GD) to estimate the mean/average.
+* The "zigzag movement" in convergence is considered noise, which can be addressed by techniques like Stochastic Gradient Descent with Momentum .
