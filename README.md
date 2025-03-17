@@ -100,3 +100,20 @@
 * The source suggests that an optimal value for beta is generally 0.9.
 * By using momentum, the optimisation process becomes less erratic and can potentially outperform standard SGD.
 * The underlying concept behind momentum is similar to exponential smoothing used in time series analysis, where recent observations are given more weight.
+## Ada Grad:
+* Ada Grad uses different learning rates for different weights (parameters) in a neural network.
+* It adapts the learning rate based on the history of gradients for each weight.
+* Weights with frequently large gradients will have their learning rate decreased over time.
+* Weights with infrequent or small gradients will have their learning rate increased over time.
+* The update rule for a weight involves dividing the initial learning rate by the square root of the cumulative sum of squared past gradients for that weight.
+* This helps in situations with sparse data, where some features are updated more than others.
+* Initially, it takes larger steps towards the minimum, and as it gets closer, it takes smaller steps.
+* A potential issue with Ada Grad is that the cumulative sum of squared gradients can become very large, causing the learning rate to become very small, potentially halting learning.
+## Ada Delta:
+* Ada Delta addresses the issue of the learning rate becoming too small in Ada Grad.
+* Instead of accumulating all past squared gradients, Ada Delta uses an exponentially weighted average of past squared gradients.
+* This means that more recent gradients have a higher influence on the current learning rate adaptation.
+* Ada Delta maintains a moving average of the squared gradients.
+* This helps to prevent the learning rate from decaying too aggressively.
+* The update involves a decay factor (often denoted as rho) to control the window of past gradients considered.
+
