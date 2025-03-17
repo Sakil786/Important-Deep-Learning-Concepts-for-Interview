@@ -88,3 +88,15 @@
 * Choosing the appropriate batch size (k) depends on the computational power available.
 * Mini-batch SGD can be likened to taking a sample of the population (GD) to estimate the mean/average.
 * The "zigzag movement" in convergence is considered noise, which can be addressed by techniques like Stochastic Gradient Descent with Momentum .
+## Stochastic Gradient Descent with Momentum
+* Momentum in SGD is a technique used to smoothen the zigzag path of weight optimisation.
+* This smoothing is achieved by incorporating a velocity term (VdW) into the weight update rule.
+* The weight update rule with momentum is: W_new = W_old - η * VdW.
+* The velocity term (VdW) is calculated as an exponentially weighted average of past gradients (dW).
+* The formula for VdW is: VdW = β * VdW_prev + (1 - β) * dW.
+* This means that recent gradients have a higher weight in determining the direction of the next step, while older gradients have a smaller influence.
+* The parameter beta (β) is called the momentum coefficient or momentum term.
+* It controls the weight given to previous velocity values and the current gradient.
+* The source suggests that an optimal value for beta is generally 0.9.
+* By using momentum, the optimisation process becomes less erratic and can potentially outperform standard SGD.
+* The underlying concept behind momentum is similar to exponential smoothing used in time series analysis, where recent observations are given more weight.
